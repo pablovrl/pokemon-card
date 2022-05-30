@@ -65,15 +65,9 @@ function App() {
   if (!pokemon) return <Loading />;
 
   return (
-    <div>
-      <Navbar
-        openModal={() => {
-          setShowModal(true);
-        }}
-        getNewPokemon={getNewPokemon}
-      />
-      <div className="flex min-w-screen min-h-screen items-center justify-center sm:bg-gradient-to-tr from-green-500 to-blue-300">
-        <div className="sm:shadow-2xl p-4 bg-green-100 relative w-screen h-screen sm:w-auto sm:h-full sm:rounded-2xl">
+    <main className="flex flex-col h-screen sm:bg-gradient-to-tr from-green-500 to-blue-300">
+      <div className="h-full flex items-center justify-center flex-col">
+        <div className="h-screen sm:h-auto sm:shadow-2xl p-4 bg-green-100 relative sm:w-auto sm:rounded-2xl">
           <FavoriteButton
             isInfavorites={isInFavorites}
             addToFavorites={addToFavorites}
@@ -82,6 +76,12 @@ function App() {
           <PokemonImage id={pokemon.id} />
           <PokemonInfo pokemon={pokemon} />
         </div>
+        <Navbar
+          getNewPokemon={getNewPokemon}
+          openModal={() => {
+            setShowModal(true);
+          }}
+        />
       </div>
       <FavoritesModal
         showModal={showModal}
@@ -90,7 +90,7 @@ function App() {
         }}
         favoritesPokemons={favoritesPokemons}
       />
-    </div>
+    </main>
   );
 }
 
