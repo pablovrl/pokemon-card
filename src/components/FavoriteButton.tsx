@@ -19,7 +19,7 @@ const FavoriteButton = ({
         </button>
       ) : (
         <button onClick={addToFavorites}>
-          <AiOutlineStar size="30" />
+          <AiOutlineStar className="hover:text-yellow-500" size="30" />
         </button>
       )}
     </div>
