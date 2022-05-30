@@ -7,12 +7,14 @@ interface FavoritesModalProps {
   showModal: boolean;
   closeModal: () => void;
   favoritesPokemons: FavoritesPokemons[];
+  removeFromFavorites: (id?: number) => void;
 }
 
 const FavoritesModal = ({
   showModal,
   closeModal,
   favoritesPokemons,
+  removeFromFavorites,
 }: FavoritesModalProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4);
@@ -49,7 +51,10 @@ const FavoritesModal = ({
                     You haven't added anything to favorites yet :(
                   </h4>
                 ) : (
-                  <FavoritesTable currentItems={currentItems} />
+                  <FavoritesTable
+                    removeFromFavorites={removeFromFavorites}
+                    currentItems={currentItems}
+                  />
                 )}
                 {/*footer*/}
                 <div className="flex items-center justify-center slate-200 rounded-b h-16">

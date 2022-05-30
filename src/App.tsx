@@ -46,9 +46,10 @@ function App() {
     }
   };
 
-  const removeFromFavorites = () => {
+  const removeFromFavorites = (id?: number) => {
     if (pokemon) {
-      const newFavorites = favoritesPokemons.filter((p) => p.id !== pokemon.id);
+      const pokemonId = typeof id === "number" ? id : pokemon.id;
+      const newFavorites = favoritesPokemons.filter((p) => p.id !== pokemonId);
       setFavoritesPokemons(newFavorites);
     }
   };
@@ -89,6 +90,7 @@ function App() {
           setShowModal(false);
         }}
         favoritesPokemons={favoritesPokemons}
+        removeFromFavorites={removeFromFavorites}
       />
     </main>
   );

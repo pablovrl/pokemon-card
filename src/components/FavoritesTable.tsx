@@ -3,8 +3,10 @@ import { FiTrash } from "react-icons/fi";
 
 const FavoritesTable = ({
   currentItems,
+  removeFromFavorites
 }: {
   currentItems: FavoritesPokemons[];
+  removeFromFavorites: (id?: number) => void;
 }) => {
   return (
     <div className="flex flex-col h-full">
@@ -53,7 +55,7 @@ const FavoritesTable = ({
                       {pokemon.name}
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                      <button>
+                      <button onClick={() => {removeFromFavorites(pokemon.id)}}>
                         <FiTrash size="20" />
                       </button>
                     </td>
